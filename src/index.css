@@ -31,3 +31,76 @@
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
+ /* Mobile View Fix for Homepage - Add to your src/index.css file */
+
+/* Base overflow control - prevents horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Consistent float animation - fix the duplicate animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* More specific CSS selectors that target only the homepage */
+.homepage-container {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Media queries for responsive fixes on mobile */
+@media (max-width: 768px) {
+  /* Fix potential overflow in Hero Section */
+  .homepage-container .hero-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure grid items don't overflow */
+  .homepage-container .grid {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* Ensure SVG elements respect container width */
+  .homepage-container svg {
+    max-width: 100%;
+  }
+  
+  /* Handle absolute positioned elements */
+  .homepage-container .absolute {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Ensure form elements don't overflow */
+  .homepage-container form, 
+  .homepage-container .card, 
+  .homepage-container .bg-white {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Fix for decorative elements */
+.decoration-element {
+  width: auto;
+  overflow: hidden;
+}
